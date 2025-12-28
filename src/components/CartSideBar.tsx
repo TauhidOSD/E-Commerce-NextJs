@@ -7,6 +7,7 @@ interface CartSideBarProps{
 }
 
 const CartSideBar = ({isOpen, onClose}: CartSideBarProps) => {
+    const items = []
   return (
    <>
    {
@@ -22,7 +23,16 @@ const CartSideBar = ({isOpen, onClose}: CartSideBarProps) => {
         <h2 className='text-xl font-bold text-gray-900'>Shopping Cart</h2>
         <button onClick={onClose} className='p-2 hover:bg-gray-100 rounded-full transition-colors'><FiX className='w-6 h-6 text-gray-600'/></button>
     </div>
+
+    {/* Card Items */}
+
+   <div className='flex-1 overflow-y-auto p-6'>
+    {items.length === 0 ? (<p>Your Cart is empty</p>):(<p>Your product here</p>)}
    </div>
+   </div>
+
+
+   
 
    </>
   )
