@@ -26,14 +26,31 @@ const ProductGrid = ({products,initialCategory = "all"}: ProductGrid) => {
   },[searchParams])
 
 
+  const handleCategoryChange = (categorySlug : string) => {
+    setSelectedCategory(categorySlug);
+    const params =new URLSearchParams(searchParams.toString());
+    if(categorySlug === 'all'){
+      params.delete('category')
+    }else{
+      params.set('category',categorySlug)
+    }
+    router.push(`/?${params.toString()}`, {scroll: false})
+  }
+
+
   const filteredProduct = selectedCategory ==='all' ? products : products.filter(product => product.category === selectedCategory);
   console.log(filteredProduct)
 
   return (
     <div>
-      <div className='mb-8 flex flex-wrap gap-4 '>
+      <div className='  mb-8 flex flex-wrap gap-4 border-b border-gray-200 pb-4 '>
         {categories.map((category) => (
-          <button key={category.slug}>{category.name}</button>
+          <button key={category.slug}
+
+          onClick={()=> handleCategoryChange(category.slug)}
+          
+          className={`font-medium transition-colors cursor-pointer ${selectedCategory === category.slug ? 'text-indigo-600' : ''}`}
+          >{category.name}</button>
         ))}
       </div>
     </div>

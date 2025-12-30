@@ -1,28 +1,10 @@
-import ProductGrid from "@/components/ProductGrid";
-import {products} from "@/data/products"
-import { Suspense } from "react";
+import { Suspense } from 'react';
+import { products } from '@/data/products';
+import ProductGrid from '@/components/ProductGrid';
 
-
- interface HomeProps {
-  searchParams: Promise<{category?:string}>
- }
- 
- const Home = async({searchParams} : HomeProps) => {
-
-  const params = await searchParams;
-  const category = params?.category || "all";
-  console.log(category)
-  return (
-    <div className="max-w-7xl max-auto px-4 py-12 sm:px-6 lg:px-8">
-      <Suspense fallback={<ProductGridFallback/>}>
-        <ProductGrid products= {products} initialCategory= {category}/>
-      </Suspense>
-    </div>
-  )
+interface HomeProps {
+  searchParams: Promise<{ category?: string }>;
 }
-
-export default Home
-
 
 function ProductGridFallback() {
   return (
@@ -41,6 +23,19 @@ function ProductGridFallback() {
           </div>
         ))}
       </div>
+    </div>
+  );
+}
+
+export default async function Home({ searchParams }: HomeProps) {
+  const params = await searchParams;
+  const category = params.category || 'all';
+
+  return (
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <Suspense fallback={<ProductGridFallback />}>
+        <ProductGrid products={products} initialCategory={category} />
+      </Suspense>
     </div>
   );
 }
