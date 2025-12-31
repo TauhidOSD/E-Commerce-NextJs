@@ -4,6 +4,7 @@ import { Product } from '@/types/product'
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import ProductCard from './ProductCard';
 
 
 
@@ -53,6 +54,18 @@ const ProductGrid = ({products,initialCategory = "all"}: ProductGrid) => {
           >{category.name}</button>
         ))}
       </div>
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
+        {
+          filteredProduct.map((product)=> (
+            <ProductCard key={product.id} product={product}/>
+          ))
+        }
+      </div>
+      {
+        filteredProduct.length === 0 && (
+            <div className='text-gray-500'>No product found in this category</div>
+        )
+      }
     </div>
   )
 }
