@@ -16,13 +16,14 @@ export default function ProductCard({product}: ProductCardProps) {
             alt={product.name}
             width={400}
             height={400}
-            className="h-full w-full object-cover object-center transition-transform group-hover:saturate-105"
+            className="h-full w-full object-cover object-center transition-transform group-hover:scale-105"
             />
-            <div className='mt-4'>
+            
+        </div>
+        <div className='mt-4'>
                 <h3 className='text-sm font-medium text-gray-900'>{product.name}</h3>
                 <p className='mt-1 text-sm font-semibold text-gray-800'>${product.price.toFixed(2)}</p>
             </div>
-        </div>
     </Link>
   )
 }
