@@ -153,6 +153,9 @@ export const categories: Category[] = [
   { name: 'Stickers', slug: 'stickers' },
 ];
 
+export const getProductBySlug = (slug: string)=> {
+  return products.find(product => product.slug === slug);
+}
 
 
 
