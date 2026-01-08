@@ -22,6 +22,7 @@ const ProductPage = async({params}: ProductPageProps) =>
 
   return (
     <>
+    {/* breadcrumb navigation */}
     <div className='bg-gray-50 border-b border-gray-200'>
       <div className='max-w-7xl mx-auto px-4 p py-4 sm:px-6 lg:px-8'>
         <nav className='flex items-center space-x-2 text-sm text-gray-600'>
@@ -57,6 +58,20 @@ const ProductPage = async({params}: ProductPageProps) =>
 
         </nav>
       </div>
+    </div>
+
+
+    <div className='mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8'>
+      <div className='grid gap-12 lg:grid-cols-2 grid-cols-1 mb-16'>
+
+        {/* product image */}
+        <div>Product image</div>
+        
+        {/* product info */}
+        <div>product info</div>
+
+      </div>
+
     </div>
     
     </>
