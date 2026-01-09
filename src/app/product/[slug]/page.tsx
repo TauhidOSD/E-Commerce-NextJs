@@ -65,10 +65,10 @@ const ProductPage = async({params}: ProductPageProps) =>
       <div className='grid gap-12 lg:grid-cols-2 grid-cols-1 mb-16'>
 
         {/* product image */}
-        <div>Product image</div>
+        <div className=''>Product image</div>
         
         {/* product info */}
-        <div>product info</div>
+        <div className=''>product info</div>
 
       </div>
 
