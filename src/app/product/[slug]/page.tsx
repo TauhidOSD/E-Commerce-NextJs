@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import React from 'react'
 import NotFound from './not-found';
 import Link from 'next/link';
+import ProductImageGallery from '@/components/ProductImageGallery';
 
 interface ProductPageProps {
     params: Promise<{slug: string}>
@@ -65,7 +66,13 @@ const ProductPage = async({params}: ProductPageProps) =>
       <div className='grid gap-12 lg:grid-cols-2 grid-cols-1 mb-16'>
 
         {/* product image */}
-        <div className=''>Product image</div>
+        <div className='sticky top-8 self-start'>
+
+          <ProductImageGallery
+          images={product.images || [product.image]}
+          productName={product.name}
+          />
+        </div>
         
         {/* product info */}
         <div className=''>product info</div>
