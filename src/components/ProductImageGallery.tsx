@@ -36,9 +36,34 @@ const ProductImageGallery = ({images,productName}: ProductImageGalleryProps) => 
                 height={800}
                 className='h-full w-full object-cover object-center transition-opacity duration-300'
                 />
+                fallbackText={productName}
             </div>
 
         </div>
+
+    {/* Thumbnail gallery */}
+
+    {
+        displayImage.length > 1 && (
+            <div className='grid grid-cols-4 gap-3'>{
+                displayImage.map((image, index)=> (
+                    <button key={index}
+                    onClick={()=> handleThumbnailClick(index) }
+                    >
+                         <ProductImage
+                src={selectedImage}
+                alt={`${productName} image ${selectedImageIndex + 1}`}
+                width={800}
+                height={800}
+                className='h-full w-full object-cover object-center transition-opacity duration-300'
+                fallbackText={`${productName} Thumbnail ${index +1}`}
+                />
+                    </button>
+                ))
+                }</div>
+        )
+    }
+
     </div>
   )
 }
