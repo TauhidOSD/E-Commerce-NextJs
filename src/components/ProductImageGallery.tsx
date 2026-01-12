@@ -27,7 +27,7 @@ const ProductImageGallery = ({images,productName}: ProductImageGalleryProps) => 
     <div className='space-y-6 '>
         {/* main image */}
 
-        <div className='aspect-square w-full overflow-hidden rounded-xl  bg-gray-100 shadow-sm border border-gray-200'>
+        <div key={selectedImageIndex} className='aspect-square w-full overflow-hidden rounded-xl  bg-gray-100 shadow-sm border border-gray-200'>
             <div className='w-full h-full animate-fade-in'>
                 <ProductImage
                 src={selectedImage}
@@ -49,13 +49,14 @@ const ProductImageGallery = ({images,productName}: ProductImageGalleryProps) => 
                 displayImage.map((image, index)=> (
                     <button key={index}
                     onClick={()=> handleThumbnailClick(index) }
+                    className={`aspect-square w-full overflow-hidden rounded-lg border-2 transition-all cursor-pointer ${selectedImageIndex === index? 'border-blue-500': 'border-gray-200 hover:shadow-lg'}`}
                     >
                          <ProductImage
-                src={selectedImage}
-                alt={`${productName} image ${selectedImageIndex + 1}`}
-                width={800}
-                height={800}
-                className='h-full w-full object-cover object-center transition-opacity duration-300'
+                src={image}
+                alt={`${productName} image ${index + 1}`}
+                width={200}
+                height={200}
+                className={`h-full w-full object-cover object-center transition-opacity duration-300 cursor-pointer ${selectedImageIndex === index ? 'opacity-100' : 'opacity-70 hover:opacity-100'}`}
                 fallbackText={`${productName} Thumbnail ${index +1}`}
                 />
                     </button>
