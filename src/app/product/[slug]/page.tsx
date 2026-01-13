@@ -5,6 +5,7 @@ import React from 'react'
 import NotFound from './not-found';
 import Link from 'next/link';
 import ProductImageGallery from '@/components/ProductImageGallery';
+import { FiStar } from 'react-icons/fi';
 
 interface ProductPageProps {
     params: Promise<{slug: string}>
@@ -75,7 +76,27 @@ const ProductPage = async({params}: ProductPageProps) =>
         </div>
         
         {/* product info */}
-        <div className=''>product info</div>
+        <div className='flex flex-col'>
+          {/* product title and price */}
+          <div className='mb-6'>
+            <h1 className='text-4xl font-bold to-gray-900 tracking-tight mb-4  '>{product.name}</h1>
+            <div className='flex items-baseline gap-1'>
+              <p className='text-4xl font-bold text-gray-900'>${product.price.toFixed(2)}</p>
+              <span className='text-lg font-normal to-gray-500'>{product.currency}</span>
+            </div>
+          </div>
+          {/* rating provider */}
+          <div className='flex items-center gap-2 mb-6 '>
+            <div className='flex items-center'>
+              {[...Array(5)].map((_,index) => (
+                <FiStar key={index} className='w-6 h-6 text-amber-300 fill-amber-300 '/>
+              ))}
+            </div>
+            <span className='text-gray-600 text-sm' >(120 review)</span>
+            <span className='text-gray-300'>|</span>
+            <span className='text-sm text-green-600 font-medium'>In Stoke</span>
+          </div>
+        </div>
 
       </div>
 
