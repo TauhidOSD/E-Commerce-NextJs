@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Product } from "@/types/product";
+import { Span } from "next/dist/trace";
 
 interface ProductOptionsProps {
   product: Product;
@@ -13,12 +14,12 @@ interface ProductOptionsProps {
 }
 
 const ProductOptions = ({ product, onSelectionChange }: ProductOptionsProps) => {
-  const [selectedColor, setSelectedColor] = useState<string | undefined>(
-    product.colors?.[0]
+  const [selectedColor, setSelectedColor] = useState<string | null>(
+    product.colors?.[0] || null
   );
 
-  const [selectedSize, setSelectedSize] = useState<string | undefined>(
-    product.sizes?.[0]
+  const [selectedSize, setSelectedSize] = useState<string | null>(
+    product.sizes?.[0] || null
   );
 
   const [quantity, setQuantity] = useState<number>(1);
@@ -27,12 +28,49 @@ const ProductOptions = ({ product, onSelectionChange }: ProductOptionsProps) => 
 
   const handleColorChange = (color: string) => {
     setSelectedColor(color);
-    onSelectionChange?.({ color });
+    notifyChange(color, selectedSize, quantity)
+    
   };
 
+  const handleSizeChange = (size: string) => {
+    setSelectedSize(size);
+    notifyChange(selectedColor, size, quantity);
+  }
+
+  const handleQuantityChange = (qty : number) => {
+    const clampedQuantity = Math.max(1, Math.min(maxQuantity,qty));
+    setQuantity(qty)
+    notifyChange(selectedColor, selectedSize, clampedQuantity);
+  }
+
+  const notifyChange = (color: string | null , size: string | null, qty: number) => {
+    if(onSelectionChange){
+      onSelectionChange({
+        color: color || undefined,
+        size: size || undefined,
+        quantity: qty
+      })
+        
+      
+    }
+  }
+
   return (
-    <div>
-      <p>Product Options</p>
+    <div className="space-y-8 border-t border-gray-200 pt-8">
+      {/* color options */}
+      {
+        product.colors && product.colors.length > 0 && (
+          <div>
+            <div className="flex items-center justify-start mb-4">
+              <label className="block text-base font-semibold to-gray-900 mr-2">color</label>
+              {
+                selectedColor && (<span className="text-sm font-medium text-gray-600">({selectedColor})</span>)
+              }
+            </div>
+          </div>
+        )
+      }
+     
     </div>
   );
 };
