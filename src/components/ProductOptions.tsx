@@ -97,6 +97,7 @@ const ProductOptions = ({ product, onSelectionChange }: ProductOptionsProps) => 
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7"></path>
                           </svg>
                         </span>
+                      //  another section created
                       )
                     }
 
