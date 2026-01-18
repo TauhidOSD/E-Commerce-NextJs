@@ -15,7 +15,7 @@ interface ProductOptionsProps {
 
 const ProductOptions = ({ product, onSelectionChange }: ProductOptionsProps) => {
   const [selectedColor, setSelectedColor] = useState<string | null>(
-    product.colors?.[0] || null
+    product.sizes?.[0] || null
   );
 
   const [selectedSize, setSelectedSize] = useState<string | null>(
@@ -59,16 +59,16 @@ const ProductOptions = ({ product, onSelectionChange }: ProductOptionsProps) => 
     <div className="space-y-8 border-t border-gray-200 pt-8">
       {/* color options */}
       {
-        product.colors && product.colors.length > 0 && (
+        product.sizes && product.sizes.length > 0 && (
           <div>
             <div className="flex items-center justify-start mb-4">
-              <label className="block text-base font-semibold to-gray-900 mr-2">color</label>
+              <label className="block text-base font-semibold to-gray-900 mr-2">Color</label>
               {
                 selectedColor && (<span className="text-sm font-medium text-gray-600">({selectedColor})</span>)
               }
             </div>
             <div className="flex flex-wrap gap-3">
-              {product.colors.map((color)=>{
+              {product.sizes.map((color)=>{
 
                 const isSelected = selectedColor === color;
                 const colorValue = getColorValue(color);
@@ -97,9 +97,41 @@ const ProductOptions = ({ product, onSelectionChange }: ProductOptionsProps) => 
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7"></path>
                           </svg>
                         </span>
-                      //  another section created
                       )
                     }
+
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+        )
+      }
+      {/* size selection */}
+      {
+        product.sizes && product.sizes.length > 0 && (
+          <div>
+            <div className="flex items-center justify-start mb-4">
+              <label className="block text-base font-semibold to-gray-900 mr-2">Sizes</label>
+              {
+                selectedSize && (<span className="text-sm font-medium text-gray-600">({selectedSize})</span>)
+              }
+            </div>
+            <div className="flex flex-wrap gap-3">
+              {product.sizes.map((size)=>{
+
+                const isSelected = selectedSize === size;
+               
+                return (
+                  <button 
+                  key={size}
+                  onClick={()=> handleSizeChange(size)}
+                  className={`group relative flex items-center justify-center w-10 h-10 rounded-full border-2 ${isSelected ? 'border-gray-900 bg-amber-100'  : 'border-gray-300'} `}
+                 
+                  >
+                    
+
+                   {size}
 
                   </button>
                 )

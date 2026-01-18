@@ -32,11 +32,13 @@ export const products: Product[] = [
       'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&h=800&fit=crop',
       'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=800&h=800&fit=crop',
       'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&h=800&fit=crop&q=80',
+      
     ],
     category: 'accessories',
     slug: 'acme-drawstring-bag',
     colors: ['Black', 'Navy', 'Gray', 'Red'],
     stock: 30,
+    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
   },
   {
     id: '3',
