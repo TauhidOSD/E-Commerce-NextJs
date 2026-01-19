@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Product } from "@/types/product";
 import { Span } from "next/dist/trace";
+import { FiMinus, FiPlus } from "react-icons/fi";
 
 interface ProductOptionsProps {
   product: Product;
@@ -140,6 +141,55 @@ const ProductOptions = ({ product, onSelectionChange }: ProductOptionsProps) => 
           </div>
         )
       }
+      {/* quantity selection */}
+      <div>
+        <div>
+            <div className="flex items-center justify-start mb-4">
+              <label className="block text-base font-semibold to-gray-900 mr-2">Quantity</label>
+              {
+                quantity && (<span className="text-sm font-medium text-gray-600">({quantity})</span>)
+              }
+              {
+                product.stock && (
+                  <span className="text-sm font-medium text-gray-600 ml-4">*{product.stock} In Stock</span>
+                )
+              }
+            </div>
+            <div className="flex items-center gap-4">
+              
+              <button 
+                 
+                  onClick={()=> handleQuantityChange(quantity - 1)}
+                  disabled={quantity <=1}
+                  className={`group relative flex items-center justify-center w-10 h-10 rounded-md border-2 focus:outline-none`}
+                 
+                  >
+                   <FiMinus/>
+
+                  </button> 
+
+                  <input type="number"
+                  min={1}
+                  max={maxQuantity}
+                  value={quantity}
+                  onChange={(e) => handleQuantityChange(parseInt(e.target.value) || 1)}
+                  className="w-16 h-10 text-center border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
+
+                  />
+
+                  <button 
+                 
+                  onClick={()=> handleQuantityChange(quantity + 1)}
+                  disabled={quantity >= maxQuantity}
+                  className={`group relative flex items-center justify-center w-10 h-10 rounded-md border-2 focus:outline-none`}
+                 
+                  >
+                   <FiPlus/>
+
+                  </button> 
+            </div>
+          </div>
+      </div>
      
     </div>
   );
