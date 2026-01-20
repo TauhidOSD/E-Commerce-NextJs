@@ -59,55 +59,90 @@ const ProductOptions = ({ product, onSelectionChange }: ProductOptionsProps) => 
   return (
     <div className="space-y-8 border-t border-gray-200 pt-8">
       {/* color options */}
-      {
-        product.sizes && product.sizes.length > 0 && (
-          <div>
-            <div className="flex items-center justify-start mb-4">
-              <label className="block text-base font-semibold to-gray-900 mr-2">Color</label>
-              {
-                selectedColor && (<span className="text-sm font-medium text-gray-600">({selectedColor})</span>)
-              }
-            </div>
-            <div className="flex flex-wrap gap-3">
-              {product.sizes.map((color)=>{
-
-                const isSelected = selectedColor === color;
-                const colorValue = getColorValue(color);
-                return (
-                  <button 
-                  key={color}
-                  onClick={()=> handleColorChange(color)}
-                  className={`group relative flex items-center justify-center w-10 h-10 rounded-full border-2 ${isSelected ? 'border-gray-900' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500`}
-                  style={
-                    colorValue ? {backgroundColor: colorValue} : undefined
-                  }
-                  >
-                    {
-                      !colorValue && (
-                        <span className={`text-xs font-semibold ${isSelected ? 'text-gray-900' : 'text-gray-700'}`}>{color.charAt(0).toLocaleUpperCase()}</span>
-                      )
-                    }
-
-                    {
-                      isSelected && (
-                        <span className="absolute inset-0 flex items-center justify-center" >
-                          <svg className="w-5 h-5 text-white drop-shadow-md"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7"></path>
-                          </svg>
-                        </span>
-                      )
-                    }
-
-                  </button>
-                )
-              })}
-            </div>
+      {product.colors && product.colors.length > 0 && (
+        <div>
+          <div className="flex items-center justify-start mb-4">
+            <label className="block text-base font-semibold text-gray-900 mr-2">
+              Color
+            </label>
+            {selectedColor && (
+              <span className="text-sm font-medium text-gray-600">
+                ({selectedColor})
+              </span>
+            )}
           </div>
-        )
-      }
+          <div className="flex flex-wrap gap-3">
+            {product.colors.map((color) => {
+              const isSelected = selectedColor === color;
+              const colorValue = getColorValue(color);
+              
+              return (
+                <button
+                  key={color}
+                  onClick={() => handleColorChange(color)}
+                  className={`group relative flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all duration-200 ${
+                    isSelected
+                      ? 'border-gray-900 ring-2 ring-gray-900 ring-offset-2 scale-110 shadow-lg'
+                      : 'border-gray-300 hover:border-gray-600 hover:scale-105 hover:shadow-md'
+                  }`}
+                  style={
+                    colorValue
+                      ? {
+                          backgroundColor: colorValue,
+                        }
+                      : undefined
+                  }
+                  aria-label={`Select color ${color}`}
+                  aria-pressed={isSelected}
+                  title={color}
+                >
+                  {!colorValue && (
+                    <span className={`text-xs font-semibold ${
+                      isSelected ? 'text-gray-900' : 'text-gray-700'
+                    }`}>
+                      {color.charAt(0).toUpperCase()}
+                    </span>
+                  )}
+                  {isSelected && colorValue && (
+                    <span className="absolute inset-0 flex items-center justify-center">
+                      <svg
+                        className="w-5 h-5 text-white drop-shadow-md"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={3}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    </span>
+                  )}
+                  {isSelected && !colorValue && (
+                    <span className="absolute inset-0 flex items-center justify-center">
+                      <svg
+                        className="w-5 h-5 text-gray-900"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={3}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
       {/* size selection */}
       {
         product.sizes && product.sizes.length > 0 && (
@@ -127,7 +162,7 @@ const ProductOptions = ({ product, onSelectionChange }: ProductOptionsProps) => 
                   <button 
                   key={size}
                   onClick={()=> handleSizeChange(size)}
-                  className={`group relative flex items-center justify-center w-10 h-10 rounded-full border-2 ${isSelected ? 'border-gray-900 bg-amber-100'  : 'border-gray-300'} `}
+                  className={`group relative flex items-center justify-center w-14 h-10 rounded-md border-2 ${isSelected ? 'border-gray-900 bg-amber-300'  : 'border-gray-300'} `}
                  
                   >
                     
@@ -161,7 +196,7 @@ const ProductOptions = ({ product, onSelectionChange }: ProductOptionsProps) => 
                  
                   onClick={()=> handleQuantityChange(quantity - 1)}
                   disabled={quantity <=1}
-                  className={`group relative flex items-center justify-center w-10 h-10 rounded-md border-2 focus:outline-none`}
+                  className={`group relative flex items-center justify-center w-12 h-10 rounded-md border-2 focus:outline-none bg-red-500 cursor-pointer`}
                  
                   >
                    <FiMinus/>
@@ -173,7 +208,7 @@ const ProductOptions = ({ product, onSelectionChange }: ProductOptionsProps) => 
                   max={maxQuantity}
                   value={quantity}
                   onChange={(e) => handleQuantityChange(parseInt(e.target.value) || 1)}
-                  className="w-16 h-10 text-center border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
+                  className="w-14 h-10 text-center font-medium border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
 
                   />
 
@@ -181,7 +216,7 @@ const ProductOptions = ({ product, onSelectionChange }: ProductOptionsProps) => 
                  
                   onClick={()=> handleQuantityChange(quantity + 1)}
                   disabled={quantity >= maxQuantity}
-                  className={`group relative flex items-center justify-center w-10 h-10 rounded-md border-2 focus:outline-none`}
+                  className={`group relative flex items-center justify-center w-12 h-10 rounded-md border-2 focus:outline-none bg-green-500 cursor-pointer`}
                  
                   >
                    <FiPlus/>
