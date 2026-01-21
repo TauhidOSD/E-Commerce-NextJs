@@ -2,6 +2,7 @@
 import { Product } from '@/types/product'
 import React, { useState } from 'react'
 import ProductOptions from './ProductOptions';
+import AddToCartButton from './AddToCartButton';
 
 interface ProductActionProps {
   product : Product
@@ -39,6 +40,15 @@ const ProductAction = ({product}:ProductActionProps) => {
       <ProductOptions product={product}
       onSelectionChange={handleSelectionChange}
       />
+    </div>
+    {/* add to card section */}
+    <div className='space-y-4 mb-8'>
+    <AddToCartButton
+    product={product}
+    selectedColor={selectedColor}
+    selectedSize={selectedSize}
+    quantity={quantity}
+    />
     </div>
     </>
   )
