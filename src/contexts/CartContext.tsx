@@ -55,5 +55,17 @@ export const CartProvider = ({children}: {children: ReactNode}) => {
         })
     }
 
-    
+    const removeFromCart =(
+        productId: string,
+        selectedColor?: string,
+        selectedSize?: string
+    ) => {
+        setItems((prevItems) => prevItems.filter((item) => !(
+            item.product.id === productId && 
+            item.selectedColor === selectedColor && 
+            item.selectedSize === selectedSize
+        ) ))
+    }
+
+
 }
