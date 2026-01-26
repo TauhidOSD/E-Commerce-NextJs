@@ -67,5 +67,25 @@ export const CartProvider = ({children}: {children: ReactNode}) => {
         ) ))
     }
 
+    const updateQuantity = (
+        productId: string,
+        quantity: number,
+        selectedColor?: string,
+        selectedSize?: string
+    ) => {
+        if(quantity <= 0){
+            removeFromCart(productId, selectedColor, selectedSize);
+            return;
+        }
+        setItems((prevItems) => prevItems.map((item) =>(
+            item.product.id === productId && 
+            item.selectedColor === selectedColor &&
+            item.selectedSize === selectedSize
+        ) ?
+        {...item, quantity}: item
+    ))
+
+    }
+
 
 }
