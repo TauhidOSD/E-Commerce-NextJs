@@ -2,7 +2,7 @@
 
 import { CartItem } from "@/types/cart"
 import { Product } from "@/types/product";
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
 interface CartContextType {
     items: CartItem[];
@@ -99,6 +99,12 @@ export const CartProvider = ({children}: {children: ReactNode}) => {
         </CartContext.Provider>
     )
 
-// 
+}
 
+export const useCart =()=> {
+    const context = useContext(CartContext);
+    if(context === undefined){
+        throw new Error("useCart mast be used within a CartProvider");
+    }
+    return context;
 }
