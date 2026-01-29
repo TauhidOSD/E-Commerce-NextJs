@@ -108,3 +108,4 @@ export const useCart =()=> {
     }
     return context;
 }
+// now design for add to card UI
