@@ -21,6 +21,7 @@ const AddToCartButton = ({    product,selectedColor,selectedSize,quantity
   }
 
   return (
+    //button design onclick
     <button>Add To Cart</button>
   )
 }
