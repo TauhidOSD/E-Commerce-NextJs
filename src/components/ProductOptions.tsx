@@ -196,7 +196,7 @@ const ProductOptions = ({ product, onSelectionChange }: ProductOptionsProps) => 
                  
                   onClick={()=> handleQuantityChange(quantity - 1)}
                   disabled={quantity <=1}
-                  className={`group relative flex items-center justify-center w-12 h-10 rounded-md border-2 focus:outline-none bg-red-500 cursor-pointer`}
+                  className={`group relative flex items-center justify-center w-10 h-10 rounded-md border-2 focus:outline-none  cursor-pointer`}
                  
                   >
                    <FiMinus/>
@@ -216,7 +216,7 @@ const ProductOptions = ({ product, onSelectionChange }: ProductOptionsProps) => 
                  
                   onClick={()=> handleQuantityChange(quantity + 1)}
                   disabled={quantity >= maxQuantity}
-                  className={`group relative flex items-center justify-center w-12 h-10 rounded-md border-2 focus:outline-none bg-green-500 cursor-pointer`}
+                  className={`group relative flex items-center justify-center w-10 h-10 rounded-md border-2 focus:outline-none  cursor-pointer`}
                  
                   >
                    <FiPlus/>
