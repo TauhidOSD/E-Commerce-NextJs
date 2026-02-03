@@ -1,5 +1,8 @@
-import React from 'react'
+import { useCart } from '@/contexts/CartContext';
+import Link from 'next/link';
+
 import { FiX } from 'react-icons/fi';
+import ProductImage from './ProductImage';
 
 interface CartSideBarProps{
     isOpen: boolean;
@@ -7,7 +10,7 @@ interface CartSideBarProps{
 }
 
 const CartSideBar = ({isOpen, onClose}: CartSideBarProps) => {
-    const items = []
+    const {items, removeFromCart, updateQuantity, getTotalPrice,clearCart} = useCart()
   return (
    <>
    {
@@ -27,7 +30,25 @@ const CartSideBar = ({isOpen, onClose}: CartSideBarProps) => {
     {/* Card Items */}
 
    <div className='flex-1 overflow-y-auto p-6'>
-    {items.length === 0 ? (<p>Your Cart is empty</p>):(<p>Your product here</p>)}
+    {items.length === 0 ? (<p>Your Cart is empty</p>):(<div className='space-y-4'>
+        {
+            items.map((item, index) => (
+                <div key={index}
+                className='flex gap-4 pb-4 border-b border-gray-200 last:border-0'
+                >
+                    <Link href={`/product/${item.product.slug}`}>
+                    <ProductImage
+                    src={item.product.image}
+                    alt={item.product.name}
+                    width={80}
+                    height={80}
+                    className='w-full h-full object-cover'
+                    fallbackText={item.product.name}/>
+                    </Link>
+                </div>
+            ))
+        }
+    </div>)}
    </div>
    </div>
 

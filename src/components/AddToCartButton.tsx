@@ -25,6 +25,7 @@ const AddToCartButton = ({    product,selectedColor,selectedSize,quantity
     
     <button
     onClick={handleAddToCart}
+    disabled={isAdded}
     className={`group relative w-full overflow-hidden rounded-lg bg-gray-900 px-8 py-4 text-base font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-xl hover:scale[1.01] active: scale-[.99] `}
     >
       <span className='relative z-10 flex items-center justify-center gap-3'>
@@ -39,4 +40,3 @@ const AddToCartButton = ({    product,selectedColor,selectedSize,quantity
 }
 
 export default AddToCartButton
-//

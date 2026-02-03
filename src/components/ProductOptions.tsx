@@ -162,7 +162,7 @@ const ProductOptions = ({ product, onSelectionChange }: ProductOptionsProps) => 
                   <button 
                   key={size}
                   onClick={()=> handleSizeChange(size)}
-                  className={`group relative flex items-center justify-center w-14 h-10 rounded-md border-2 ${isSelected ? 'border-gray-900 bg-amber-300'  : 'border-gray-300'} `}
+                  className={`group relative flex items-center justify-center w-14 h-10 rounded-md border-2 ${isSelected ? 'border-gray-900 text-white bg-gray-900'  : 'border-gray-300'} `}
                  
                   >
                     
