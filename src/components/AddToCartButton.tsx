@@ -18,7 +18,8 @@ const AddToCartButton = ({    product,selectedColor,selectedSize,quantity
 
   const handleAddToCart = () => {
     addToCart(product, quantity, selectedColor,selectedSize);
-    setIsAdded(true)
+    setIsAdded(true);
+    setTimeout (()=> setIsAdded(false), 2000)
   }
 
   return (
