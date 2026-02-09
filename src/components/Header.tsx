@@ -41,7 +41,7 @@ const Header = ({
 
     //Todo CartCount
     const {getTotalItems} = useCart()
-    const cartCount = showCart ? getTotalItems() : 0;
+    const cartCount = showCart ? getTotalItems() : 0 ;
 
     return (
         <>
