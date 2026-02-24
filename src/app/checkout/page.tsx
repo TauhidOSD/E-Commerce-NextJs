@@ -16,7 +16,7 @@ const CheckOutPage = () => {
 
  const [loading, setLoading] = useState(false);
 
- const [error, setError] = useState(false);
+ const [error, setError] = useState<string | null>(null);
  const total = getTotalPrice();
 
  useEffect(() => {
@@ -29,10 +29,30 @@ const CheckOutPage = () => {
 
  const handleCheckOut = async() => {
 
+  if(items.length === 0) {
+    setError("Your cart is empty")
+    return;
+  }
+
+  setLoading(true);
+  setError(null)
+  try {
+     const response = await fetch("/api/checkout", {
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify({items})
+     })
+  } catch (error) {
+    
+  }
+
  }
 
  if(items.length === 0) {
   return null
+
  }
 
   return (
