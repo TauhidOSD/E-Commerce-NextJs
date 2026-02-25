@@ -1,3 +1,4 @@
+import { stripe } from "@/lib/stripe";
 import { NextRequest, NextResponse } from "next/server";
 
 
@@ -24,8 +25,35 @@ export async function POST (request: NextRequest){
             },
             quantity: item.quantity
         }))
+
+        const itemsSummary = items.map((item: any) => ({
+            id: item.product.id,
+            qty: item.quantity,
+            color: item.selectedColor || '',
+            size: item.selectedSize || '',
+        }))
+
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types: ['card'],
+            line_items: lineItems,
+            mode: 'payment',
+            success_url:`${request.headers.get('origin')}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url:`${request.headers.get('origin')}/checkout/cancel`, 
+            metadata:{
+                items_count: items.length.toString(),
+                items_summary: JSON.stringify(itemsSummary).substring(0, 450)
+            }
+        })
+
+        return NextResponse.json({sessionId: session.id, url: session.url})
         
-    } catch (error) {
+    } catch (error: any) {
+        console.error("Error creating from checkout session: ", error);
+        return NextResponse.json({
+            error: error.message || 'Failed to create checkout session'
+        }, {
+            status: 500
+        })
         
     }
 }

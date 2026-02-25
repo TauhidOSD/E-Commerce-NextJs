@@ -44,8 +44,23 @@ const CheckOutPage = () => {
       },
       body: JSON.stringify({items})
      })
-  } catch (error) {
-    
+     
+     const data = await response.json();
+
+     if(!response.ok){
+      throw new Error(data.error || 'Failed to create checkout session')
+     }
+
+     if(data.url){
+      window.location.href = data.url 
+     }else {
+      throw new Error('No checkout URL received from server')
+     }
+
+
+  } catch (error: any) {
+    setError(error.message || 'A error occurred during checkout')
+    setLoading(false)
   }
 
  }
