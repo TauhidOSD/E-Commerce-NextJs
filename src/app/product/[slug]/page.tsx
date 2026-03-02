@@ -1,8 +1,8 @@
 import { getProductBySlug } from '@/data/products';
-import { log } from 'console';
+
 import { notFound } from 'next/navigation';
 import React from 'react'
-import NotFound from './not-found';
+
 import Link from 'next/link';
 import ProductImageGallery from '@/components/ProductImageGallery';
 import { FiStar } from 'react-icons/fi';
