@@ -23,6 +23,7 @@ const ProductGrid = ({products,initialCategory = "all"}: ProductGrid) => {
 
   useEffect(() => {
       const category = searchParams.get('category') || "all";
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSelectedCategory(category);
   },[searchParams])
 
