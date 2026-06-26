@@ -72,7 +72,7 @@ export default function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
                 <Link
                   href="/"
                   onClick={onClose}
-                  className="px-6 py-3  bg-accent text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
+                  className="px-6 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
                 >
                   Continue Shopping
                 </Link>
