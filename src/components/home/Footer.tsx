@@ -53,7 +53,7 @@ export default function Footer() {
               placeholder="Enter your email"
               className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
             />
-            <button className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-primary-dark">
+            <button className="inline-flex shrink-0 items-center gap-2 rounded-lg  bg-accent px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover: bg-accent">
               <Send className="h-4 w-4" />
               Join
             </button>
@@ -75,15 +75,15 @@ export default function Footer() {
             </p>
             <div className="mt-6 space-y-3 text-sm text-gray-400">
               <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 shrink-0 text-primary" />
+                <MapPin className="h-4 w-4 shrink-0 text-accent" />
                 <span>123 Commerce St, New York, NY 10001</span>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4 shrink-0 text-primary" />
+                <Phone className="h-4 w-4 shrink-0 text-accent" />
                 <span>+1 (555) 123-4567</span>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4 shrink-0 text-primary" />
+                <Mail className="h-4 w-4 shrink-0 text-accent" />
                 <span>support@nextgenstore.com</span>
               </div>
             </div>

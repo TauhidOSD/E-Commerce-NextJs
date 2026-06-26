@@ -94,7 +94,7 @@ export default function FlashSaleBanner() {
         {/* CTA */}
         <Link
           href="/#products"
-          className="mt-10 inline-flex items-center gap-2 rounded-lg bg-white px-10 py-4 text-sm font-bold text-primary shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+          className="mt-10 inline-flex items-center gap-2 rounded-lg bg-gray-900 px-10 py-4 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
         >
           <Zap className="h-4 w-4" />
           Grab the Deal

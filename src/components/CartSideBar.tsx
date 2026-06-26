@@ -28,9 +28,8 @@ export default function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
 
       {/* Sidebar */}
       <div
-        className={`fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
         <div className="flex flex-col h-full">
           {/* Header */}
@@ -73,7 +72,7 @@ export default function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
                 <Link
                   href="/"
                   onClick={onClose}
-                  className="px-6 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
+                  className="px-6 py-3  bg-accent text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
                 >
                   Continue Shopping
                 </Link>

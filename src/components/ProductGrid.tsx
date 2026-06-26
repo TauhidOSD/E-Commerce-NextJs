@@ -9,12 +9,12 @@ import ProductCard from './ProductCard';
 
 
 interface ProductGrid {
-    products: Product[];
-    initialCategory: string;
+  products: Product[];
+  initialCategory: string;
 }
 
 
-const ProductGrid = ({products,initialCategory = "all"}: ProductGrid) => {
+const ProductGrid = ({ products, initialCategory = "all" }: ProductGrid) => {
 
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -22,25 +22,25 @@ const ProductGrid = ({products,initialCategory = "all"}: ProductGrid) => {
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || initialCategory)
 
   useEffect(() => {
-      const category = searchParams.get('category') || "all";
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setSelectedCategory(category);
-  },[searchParams])
+    const category = searchParams.get('category') || "all";
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setSelectedCategory(category);
+  }, [searchParams])
 
 
-  const handleCategoryChange = (categorySlug : string) => {
+  const handleCategoryChange = (categorySlug: string) => {
     setSelectedCategory(categorySlug);
-    const params =new URLSearchParams(searchParams.toString());
-    if(categorySlug === 'all'){
+    const params = new URLSearchParams(searchParams.toString());
+    if (categorySlug === 'all') {
       params.delete('category')
-    }else{
-      params.set('category',categorySlug)
+    } else {
+      params.set('category', categorySlug)
     }
-    router.push(`/?${params.toString()}`, {scroll: false})
+    router.push(`/?${params.toString()}`, { scroll: false })
   }
 
 
-  const filteredProduct = selectedCategory ==='all' ? products : products.filter(product => product.category === selectedCategory);
+  const filteredProduct = selectedCategory === 'all' ? products : products.filter(product => product.category === selectedCategory);
   console.log(filteredProduct)
 
   return (
@@ -49,22 +49,22 @@ const ProductGrid = ({products,initialCategory = "all"}: ProductGrid) => {
         {categories.map((category) => (
           <button key={category.slug}
 
-          onClick={()=> handleCategoryChange(category.slug)}
-          
-          className={`font-medium transition-colors cursor-pointer ${selectedCategory === category.slug ? 'text-indigo-600' : ''}`}
+            onClick={() => handleCategoryChange(category.slug)}
+
+            className={`font-medium transition-colors cursor-pointer ${selectedCategory === category.slug ? 'text-accent' : ''}`}
           >{category.name}</button>
         ))}
       </div>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
         {
-          filteredProduct.map((product)=> (
-            <ProductCard key={product.id} product={product}/>
+          filteredProduct.map((product) => (
+            <ProductCard key={product.id} product={product} />
           ))
         }
       </div>
       {
         filteredProduct.length === 0 && (
-            <div className='text-gray-500'>No product found in this category</div>
+          <div className='text-gray-500'>No product found in this category</div>
         )
       }
     </div>

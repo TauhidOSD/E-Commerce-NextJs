@@ -8,12 +8,12 @@ export default function HeroSection() {
       <div className="mx-auto flex max-w-7xl flex-col-reverse items-center gap-12 px-4 py-12 sm:px-6 md:flex-row md:py-12 lg:px-8">
         {/* ── Left Column: Copy ── */}
         <div className="flex-1 text-center md:text-left">
-          <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold tracking-wide text-primary">
+          <span className="mb-4 inline-block rounded-full bg-black/60 px-4 py-1.5 text-sm font-semibold tracking-wide text-accent">
             New Season 2026
           </span>
           <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
             Elevate Your
-            <span className="block text-primary">Everyday Style</span>
+            <span className="block text-accent">Everyday Style</span>
           </h1>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted">
             Discover curated collections of premium essentials — from
@@ -39,15 +39,15 @@ export default function HeroSection() {
           {/* ── Trust badges ── */}
           <div className="mt-10 flex items-center justify-center gap-6 text-sm text-muted md:justify-start">
             <span className="flex items-center gap-1.5">
-              <span className="inline-block h-2 w-2 rounded-full bg-green-500" />
+              <span className="inline-block h-2 w-2 rounded-full bg-green-600" />
               Free Shipping
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="inline-block h-2 w-2 rounded-full bg-green-500" />
+              <span className="inline-block h-2 w-2 rounded-full  bg-green-600" />
               30-Day Returns
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="inline-block h-2 w-2 rounded-full bg-green-500" />
+              <span className="inline-block h-2 w-2 rounded-full  bg-green-600" />
               Secure Payment
             </span>
           </div>

@@ -50,8 +50,8 @@ export default function ValueProposition() {
                 key={feature.title}
                 className="group rounded-xl border border-border bg-white p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
               >
-                <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 transition-colors duration-300 group-hover:bg-primary/20">
-                  <Icon className="h-7 w-7 text-primary" />
+                <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-black/60 transition-colors duration-300 group-hover:bg-primary/20">
+                  <Icon className="h-7 w-7 text-accent" />
                 </div>
                 <h3 className="mb-2 text-lg font-semibold text-gray-900">
                   {feature.title}

@@ -17,7 +17,7 @@ const testimonials: Testimonial[] = [
       "Absolutely love the quality! The running shoes are incredibly comfortable and the shipping was super fast. Will definitely order again.",
     rating: 5,
     initials: "SM",
-    color: "bg-primary",
+    color: "bg-black/60",
   },
   {
     name: "James Rodriguez",
@@ -72,11 +72,10 @@ function StarRating({ rating }: { rating: number }) {
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
-          className={`h-4 w-4 ${
-            i < rating
+          className={`h-4 w-4 ${i < rating
               ? "fill-accent text-accent"
               : "fill-gray-200 text-gray-200"
-          }`}
+            }`}
         />
       ))}
     </div>
