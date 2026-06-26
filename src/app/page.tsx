@@ -2,6 +2,12 @@ import { Suspense } from 'react';
 import { products } from '@/data/products';
 import ProductGrid from '@/components/ProductGrid';
 import HeroSlider from '@/components/HeroSlider';
+import FAQSection from '@/components/home/FAQSection';
+import HeroSection from '@/components/home/HeroSection';
+import CategoryGrid from '@/components/home/CategoryGrid';
+import FlashSaleBanner from '@/components/home/FlashSaleBanner';
+import Testimonials from '@/components/home/Testimonials';
+import ValueProposition from '@/components/home/ValueProposition';
 
 interface HomeProps {
   searchParams: Promise<{ category?: string }>;
@@ -10,7 +16,7 @@ interface HomeProps {
 function ProductGridFallback() {
   return (
     <div>
-      
+
       <div className="mb-8 flex flex-wrap gap-4 border-b border-gray-200 pb-4">
         <div className="h-6 w-16 animate-pulse rounded bg-gray-200"></div>
         <div className="h-6 w-20 animate-pulse rounded bg-gray-200"></div>
@@ -35,11 +41,21 @@ export default async function Home({ searchParams }: HomeProps) {
 
   return (
     <div id="products" className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-      <HeroSlider></HeroSlider>
-       <div className="mt-10"></div>
+      {/* <HeroSlider></HeroSlider> */}
+      <HeroSection></HeroSection>
+
+      <div className="mt-10"></div>
       <Suspense fallback={<ProductGridFallback />}>
         <ProductGrid products={products} initialCategory={category} />
       </Suspense>
+      <CategoryGrid></CategoryGrid>
+      <FlashSaleBanner></FlashSaleBanner>
+      <Testimonials></Testimonials>
+      <ValueProposition></ValueProposition>
+      <FAQSection></FAQSection>
+
+
+
     </div>
   );
 }

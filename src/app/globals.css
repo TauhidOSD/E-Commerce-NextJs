@@ -10,6 +10,21 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* ── E-Commerce Design Tokens ── */
+  --color-primary: #4F46E5;
+  --color-primary-dark: #3730A3;
+  --color-accent: #F59E0B;
+  --color-accent-dark: #D97706;
+  --color-surface: #F9FAFB;
+  --color-surface-dark: #111827;
+  --color-muted: #6B7280;
+  --color-border: #E5E7EB;
+
+  /* ── Custom Animations ── */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-count-pulse: count-pulse 1s ease-in-out infinite;
+  --animate-fade-in: fade-in 0.3s ease-in-out;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -29,11 +44,25 @@ body {
   from {
     opacity: 0;
   }
-  to{
+  to {
     opacity: 1;
   }
 }
 
-.animate-fade-in{
-  animation: fade-in 0.3s ease-in-out
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+}
+
+@keyframes count-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
